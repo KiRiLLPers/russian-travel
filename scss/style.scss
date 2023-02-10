@@ -26,7 +26,6 @@ $background-page: #2A2C2F;
   font-style: normal;
   color: #FFFFFF;
   background: $background-page;
-  width: 100vw;
   height: 100vh;
     &__content {
       margin: 0 auto;
@@ -162,6 +161,8 @@ $background-page: #2A2C2F;
 
 .photo-grid {
       &__wrap {
+        padding: 0;
+        list-style-type: none;
         margin: 0 auto;
         max-width: 1184px;
         width: 100%;
@@ -175,69 +176,73 @@ $background-page: #2A2C2F;
     }
 }
 
-.place {
+.places {
   display: grid;
   gap: 80px;
   max-width: 984px;
-  margin: 0 auto;
-  padding: 0;
-  list-style-type: none;
-    &__card {
-      display: grid;
-      grid-template-columns: 460px 484px;
-      grid-template-rows: repeat(2, auto);
-      column-gap: 40px;
-      row-gap: 48px;
-    }
-    &__title {
-      margin: 0;
-      @include font-title();
-      font-size: 72px;
-      line-height: 76px;
-    }
-    &__website {
-      padding: 0;
-      margin: 0;
-      list-style-type: none;
-      grid-column: 2 / 3;
-      grid-row: 1 / 2;
-      align-self: flex-end;
-    }
-    &__url-heading {
-      margin: 0;
-      @include font-text();
-      font-size: 12px;
-      line-height: 12px;
-      letter-spacing: 2px;
-      color: #AAAAAA;
-      margin-bottom: 12px;
-    }
-    &__link {
-      @include font-text();
-      font-size: 18px;
-      line-height: 22px;
-      color: #FFFFFF;
-      text-decoration: none;
-      text-decoration-line: underline;
-    }
-    &__paragraphs {
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 460px 484px;
+  grid-template-areas: 
+  "title website"
+  "image paragraphs";
+  column-gap: 40px;
+  row-gap: 48px;
+  &__title {
+    margin: 0;
+    @include font-title();
+    font-size: 72px;
+    line-height: 76px;
+    grid-area: title;
+  }
+  &__website {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    align-self: flex-end;
+    grid-area: website;
+  }
+  &__url-heading {
+    margin: 0;
+    @include font-text();
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 2px;
+    color: #AAAAAA;
+    margin-bottom: 12px;
+  }
+  &__link {
+    @include font-text();
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    text-decoration: none;
+    text-decoration-line: underline;
+  }
+  &__paragraphs {
       padding: 0;
       margin: 0;
       list-style-type: none;
       max-width: 484px;
+      grid-area: paragraphs;
     }
-    &__paragraph {
-      @include font-text();
-      font-size: 18px;
-      line-height: 163%;
-        &:first-of-type {
-          margin-bottom: 26px;
-        }
+  &__paragraph {
+    margin: 0;
+    max-width: 484px;
+    @include font-text();
+    font-size: 18px;
+    line-height: 163%;
+    &:first-of-type {
+      margin-bottom: 26px;
     }
-    &__image {
-      width: 100%;
-      object-fit: cover;
-    }
+  }
+  &__image {
+    width: 100%;
+    object-fit: cover;
+    grid-area: image;
+  }
 }
 
 // Media
@@ -268,12 +273,13 @@ $background-page: #2A2C2F;
       gap: calc(14px + (16 - 14) * ((100vw - 1024px) / (1280 - 1024)));
     }
   }
-  .place {
+  .places {
     max-width: calc(928px + (984 - 928) * ((100vw - 1024px) / (1280 - 1024)));
-    &__card {
-      grid-template-columns: calc(440px + (460 - 440) * ((100vw - 1024px) / (1280 - 1024))) calc(456px + (484 - 456) * ((100vw - 1024px) / (1280 - 1024)));
-      column-gap: calc(32px + (40 - 32) * ((100vw - 1024px) / (1280 - 1024)));
-    }
+  }
+
+  .card {
+    grid-template-columns: calc(440px + (460 - 440) * ((100vw - 1024px) / (1280 - 1024))) calc(456px + (484 - 456) * ((100vw - 1024px) / (1280 - 1024)));
+    column-gap: calc(32px + (40 - 32) * ((100vw - 1024px) / (1280 - 1024)));
   }
 
 }
@@ -288,6 +294,12 @@ $background-page: #2A2C2F;
     &__lead {
       padding-bottom: calc(88px + (92 - 88) * ((100vw - 768px) / (1024 - 768)));
       padding-top: 48px;
+    }
+    &__photo-grid {
+      padding-bottom: calc(88px (92 - 88) * ((100vw - 768px) / (1024 - 768)));
+    }
+    &__places {
+      padding-bottom: calc(90px + (92 - 90) * ((100vw - 768px) / (1024 - 768)));
     }
   }
   .lead {
@@ -314,12 +326,13 @@ $background-page: #2A2C2F;
       gap: calc(16px + (14 - 16) * ((100vw - 768px) / (1024 - 768)));
     }
   }
-  .place {
+  .places {
     max-width: calc(720px + (928 - 720) * ((100vw - 768px) / (1024 - 768)));
-      &__card {
-        grid-template-columns: calc(340px + (440 - 340) * ((100vw - 768px) / (1024 - 768))) calc(352px + (456 - 352) * ((100vw - 768px) / (1024 - 768)));
-        column-gap: calc(28px + (32 - 28) * ((100vw - 768px) / (1024 - 768)));
-      }
+    gap: calc(72px + (80 - 72) * ((100vw - 768px) / (1024 - 768)) );
+  }
+  .card {
+    grid-template-columns: calc(340px + (440 - 340) * ((100vw - 768px) / (1024 - 768))) calc(352px + (456 - 352) * ((100vw - 768px) / (1024 - 768)));
+    column-gap: calc(28px + (32 - 28) * ((100vw - 768px) / (1024 - 768)));
       &__title {
         font-size: calc(42px + (72 - 42) * ((100vw - 768px) / (1024 - 768)));
       }
@@ -343,6 +356,9 @@ $background-page: #2A2C2F;
     }
     &__intro {
       width: calc(288px + (720 - 288) * ((100vw - 320px) / (768 - 320)));
+      padding-bottom: calc(64px + (88 - 64) * ((100vw - 320px) / (768 - 320)));
+    }
+    &__photo-grid {
       padding-bottom: calc(64px + (88 - 64) * ((100vw - 320px) / (768 - 320)));
     }
   }
@@ -380,7 +396,42 @@ $background-page: #2A2C2F;
 }
 
 @media screen and (max-width: 650px) {
-  
+  .main {
+    &__places {
+      padding-bottom: calc(66px + (90 - 66) * ((100vw - 320px) / (650 - 320)) );
+    }
+  }
+  .places {
+    gap: calc(50px + (72 - 50) * ((100vw - 320px) / (650 - 320)));
+  }
+  .card {
+    grid-template-columns: calc(320px + (625 - 320) * ((100vw - 320px) / (650 - 320)));
+    row-gap: calc(32px + (48 - 32) * ((100vw - 320px) / (650 - 320)) );
+    grid-template-areas: 
+    "title"
+    "website"
+    "image"
+    "paragraphs";
+      &__title {
+        grid-area: title;
+        font-size: calc(32px + (42 -32) * ((100vw - 320px) / (650 - 320)));
+        padding: 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320))) 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320)));
+      }
+      &__website {
+        grid-area: website;
+        padding: 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320))) 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320)));
+      }
+      &__image {
+        grid-area: image;
+      }
+      &__paragraphs {
+        grid-area: paragraphs;
+        padding: 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320))) 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320)));
+      }
+      &__paragraph {
+        font-size: 16px;
+      }
+  }
 }
 
 @media screen and (max-width: 475px) {

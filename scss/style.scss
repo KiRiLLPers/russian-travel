@@ -36,17 +36,21 @@ $background-page: #2A2C2F;
   max-width: 1280px;
     &__header {
       padding-top: 28px;
+    margin: 0 auto;
+    }
+    &__footer {
+      padding-bottom: 24px;
+      margin: 0 auto;
     }
 }
 
 .header {
   width: 1184px;
-  margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
     &__list-link {
-      padding: 0;
+      padding: 0 0 5px 0;
       margin: 0;
       list-style-type: none;
       display: flex;
@@ -70,17 +74,26 @@ $background-page: #2A2C2F;
   &__lead {
     padding: 56px 0 92px 0;
     margin: 0 auto;
+    box-sizing: border-box;
   }
   &__intro {
     padding-bottom: 92px;
     margin: 0 auto;
+    box-sizing: border-box;
   }
   &__photo-grid {
     margin: 0 auto;
     padding-bottom: 92px;
+    box-sizing: border-box;
   }
   &__places {
     margin: 0 auto;
+    padding-bottom: 92px;
+    box-sizing: border-box;
+  }
+  &__cover {
+    margin: 0 auto;
+    box-sizing: border-box;
     padding-bottom: 92px;
   }
 }
@@ -161,6 +174,7 @@ $background-page: #2A2C2F;
 
 .photo-grid {
       &__wrap {
+        box-sizing: border-box;
         padding: 0;
         list-style-type: none;
         margin: 0 auto;
@@ -173,6 +187,7 @@ $background-page: #2A2C2F;
       }
       &__image {
         width: 100%;
+        display: block;
     }
 }
 
@@ -180,9 +195,10 @@ $background-page: #2A2C2F;
   display: grid;
   gap: 80px;
   max-width: 984px;
+  overflow: hidden;
 }
 
-.card {
+.place {
   display: grid;
   grid-template-columns: 460px 484px;
   grid-template-areas: 
@@ -234,8 +250,8 @@ $background-page: #2A2C2F;
     @include font-text();
     font-size: 18px;
     line-height: 163%;
-    &:first-of-type {
-      margin-bottom: 26px;
+    &:nth-child(2) {
+      margin-top: 26px;
     }
   }
   &__image {
@@ -245,6 +261,94 @@ $background-page: #2A2C2F;
   }
 }
 
+
+.cover {
+  max-width: 1184px;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 100%;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+  min-height: 740px;
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,1);
+      opacity: 0.3;
+      z-index: -1;
+      transition: opacity 200ms ease-in-out;
+    }
+    &:hover:before {
+      opacity: 0.8;
+    }
+    &__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      max-width: 100%;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    &__title {
+      @include font-title();
+      font-size: 72px;
+      line-height: 76px;
+      text-align: center;
+      margin: 0 0 32px 0;
+      max-width: 560px;
+    }
+    &__subtitle {
+      @include font-text();
+      font-size: 18px;
+      line-height: 22px;
+      text-align: center;
+      margin: 0;
+      max-width: 360px;
+    }
+}
+
+.footer {
+  max-width: 1184px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+    &__nav-link {
+      @include font-text();
+      font-size: 16px;
+      line-height: 18px;
+      text-decoration: none;
+      margin-right: 18px;
+        &:last-of-type {
+          margin: 0;
+        }
+    }
+    &__copyright {
+      margin: 0;
+      @include font-text();
+      font-size: 14px;
+      line-height: 16px;
+    }
+}
 // Media
 
 @media screen and (max-width: 1280px) {
@@ -252,10 +356,19 @@ $background-page: #2A2C2F;
     &__header {
       width: calc(928px + (1184 - 928) * ((100vw - 1024px) / (1280 - 1024)));
     }
+    &__footer {
+      width: calc(928px + (1184 - 928) * ((100vw - 1024px) / (1280 - 1024)));
+    }
   }
   .main {
     &__lead {
       padding-top: calc(48px + (56 - 48) * ((100vw - 1024px) / (1280 - 1024)));
+    }
+    &__places {
+    padding-bottom: calc(80px + (92 - 80) * ((100vw - 1024px) / (1280 - 1024)));
+    }
+    &__cover {
+      padding-bottom: calc(100px + (92 - 100) * ((100vw - 1024px) / (1280 - 1024)));
     }
   }
   .lead {
@@ -277,16 +390,21 @@ $background-page: #2A2C2F;
     max-width: calc(928px + (984 - 928) * ((100vw - 1024px) / (1280 - 1024)));
   }
 
-  .card {
+  .place {
     grid-template-columns: calc(440px + (460 - 440) * ((100vw - 1024px) / (1280 - 1024))) calc(456px + (484 - 456) * ((100vw - 1024px) / (1280 - 1024)));
     column-gap: calc(32px + (40 - 32) * ((100vw - 1024px) / (1280 - 1024)));
   }
-
+  .card {
+    min-height: calc(640px + (740 - 640) * ((100vw - 1024px) / (1280 - 1024)));
+  }
 }
 
 @media screen and (max-width: 1024px) {
   .content {
     &__header {
+      width: calc(720px + (928 - 720) * ((100vw - 768px) / (1024 - 768)));
+    }
+    &__footer {
       width: calc(720px + (928 - 720) * ((100vw - 768px) / (1024 - 768)));
     }
   }
@@ -299,7 +417,12 @@ $background-page: #2A2C2F;
       padding-bottom: calc(88px (92 - 88) * ((100vw - 768px) / (1024 - 768)));
     }
     &__places {
-      padding-bottom: calc(90px + (92 - 90) * ((100vw - 768px) / (1024 - 768)));
+      // padding-bottom: 79px;
+      padding-bottom: calc(88px + (100 - 88) * ((100vw - 768px) / (1024 - 768)));
+    }
+    &__cover {
+      // padding-bottom: 100px;
+      padding-bottom: calc(88px + (100 - 88) * ((100vw - 768px) / (1024 - 768)));
     }
   }
   .lead {
@@ -328,16 +451,26 @@ $background-page: #2A2C2F;
   }
   .places {
     max-width: calc(720px + (928 - 720) * ((100vw - 768px) / (1024 - 768)));
-    gap: calc(72px + (80 - 72) * ((100vw - 768px) / (1024 - 768)) );
+    gap: calc(70px + (80 - 70) * ((100vw - 768px) / (1024 - 768)));
   }
-  .card {
+  .place {
     grid-template-columns: calc(340px + (440 - 340) * ((100vw - 768px) / (1024 - 768))) calc(352px + (456 - 352) * ((100vw - 768px) / (1024 - 768)));
     column-gap: calc(28px + (32 - 28) * ((100vw - 768px) / (1024 - 768)));
       &__title {
         font-size: calc(42px + (72 - 42) * ((100vw - 768px) / (1024 - 768)));
+        line-height: calc(46px + (76 - 46) * ((100vw - 768px) / (1024 - 768)));
       }
       &__paragraph {
         font-size: calc(16px + (18 - 16) * ((100vw - 768px) / (1024 - 768)));
+        &:nth-child(2) {
+          margin-top: calc(25px + (26 - 25) * ((100vw - 320px) / (1024 - 320)));
+        }
+      }
+  }
+  .card {
+    min-height: calc(480px + (640 - 480) * ((100vw - 768px) / (1024 - 768)));
+      &__subtitle {
+        max-width: calc(360px + (560 - 360) * ((100vw - 768px) / (1024 - 768)));
       }
   }
 }
@@ -347,6 +480,9 @@ $background-page: #2A2C2F;
     &__header {
       max-width: calc(288px + (720 - 288) * ((100vw - 320px) / (768 - 320)));
       padding-top: calc(16px + (28 - 16) * ((100vw - 320px) / (768 - 320)));
+    }
+    &__footer {
+      max-width: calc(288px + (720 - 288) * ((100vw - 320px) / (768 - 320)));
     }
   }
   .main {
@@ -359,6 +495,9 @@ $background-page: #2A2C2F;
       padding-bottom: calc(64px + (88 - 64) * ((100vw - 320px) / (768 - 320)));
     }
     &__photo-grid {
+      padding-bottom: calc(64px + (88 - 64) * ((100vw - 320px) / (768 - 320)));
+    }
+    &__cover {
       padding-bottom: calc(64px + (88 - 64) * ((100vw - 320px) / (768 - 320)));
     }
   }
@@ -393,6 +532,25 @@ $background-page: #2A2C2F;
     max-width: calc(288px + (720 - 288) * ((100vw - 320px) / (768 - 320)));
     gap: calc(12px + (16 - 12) * ((100vw - 320px) / (768 - 320)));
   }
+  .place {
+    &__title {
+      padding-right: 10px;
+    }
+  }
+  .card {
+    min-height: calc(200px + (480 - 200) * ((100vw - 320px) / (768 - 320)));
+      &__title {
+        font-size: calc(32px + (72 - 32) * ((100vw - 320px) / (768 - 320)));
+        line-height: calc(35px + (76 - 35) * ((100vw - 320px) / (768 - 320)));
+        margin-bottom: calc(16px + (32 - 16) * ((100vw - 320px) / (768 - 320)));
+        max-width: calc(288px + (560 - 288) * ((100vw - 320px) / (768 - 320)));
+      }
+      &__subtitle {
+        font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (768 - 320)));
+        line-height: calc(16px + (22 - 16) * ((100vw - 320px) / (768 - 320)));
+        max-width: calc(288px + (360 - 288) * ((100vw - 320px) / (768 - 320)));
+      }
+  }
 }
 
 @media screen and (max-width: 650px) {
@@ -402,35 +560,44 @@ $background-page: #2A2C2F;
     }
   }
   .places {
-    gap: calc(50px + (72 - 50) * ((100vw - 320px) / (650 - 320)));
+    gap: calc(60px + (72 - 60) * ((100vw - 320px) / (650 - 320)));
   }
-  .card {
-    grid-template-columns: calc(320px + (625 - 320) * ((100vw - 320px) / (650 - 320)));
-    row-gap: calc(32px + (48 - 32) * ((100vw - 320px) / (650 - 320)) );
-    grid-template-areas: 
-    "title"
-    "website"
-    "image"
-    "paragraphs";
+  .place {
+    display: flex;
+    flex-direction: column;
+    row-gap: calc(32px + (48 - 32) * ((100vw - 320px) / (650 - 320)));
       &__title {
-        grid-area: title;
         font-size: calc(32px + (42 -32) * ((100vw - 320px) / (650 - 320)));
         padding: 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320))) 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320)));
+        line-height: calc(35px + (46 - 35) * ((100vw - 320px) / (650 - 320)));
       }
       &__website {
-        grid-area: website;
+        align-self: flex-start;
         padding: 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320))) 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320)));
       }
       &__image {
         grid-area: image;
       }
       &__paragraphs {
-        grid-area: paragraphs;
         padding: 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320))) 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320)));
       }
       &__paragraph {
         font-size: 16px;
       }
+  }
+  .footer {
+    flex-direction: column;
+    &__nav {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: calc(48px + (0 - 48) * ((100vw - 320px) / (650 - 320)));
+    }
+    &__nav-link {
+      margin: 0 0 calc(32px + (0 - 32) * ((100vw - 320px) / (650 - 320))) 0;
+      font-size: calc(24px + (16 - 24) * ((100vw - 320px) / (650 - 320)));
+      line-height: calc(24px + (18 - 24) * ((100vw - 320px) / (650 - 320)));
+    }
+
   }
 }
 
@@ -450,6 +617,11 @@ $background-page: #2A2C2F;
   .main {
     &__lead {
       padding-top: 48px;
+    }
+  }
+  .intro {
+    &__title {
+      padding-right: 37px;
     }
   }
 }

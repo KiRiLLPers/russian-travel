@@ -1,0 +1,23 @@
+.main__places {
+  margin: 0 auto;
+  padding-bottom: 92px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1280px) {
+  .main__places {
+    padding-bottom: calc(84px + (92 - 84) * ((100vw - 1024px) / (1280 - 1024)));
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .main__places {
+    padding-bottom: calc(92px + (84 - 92) * ((100vw - 768px) / (1024 - 768)));
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main__places {
+    padding-bottom: calc(66px + (92 - 66) * ((100vw - 320px) / (650 - 320)) );
+  }
+}

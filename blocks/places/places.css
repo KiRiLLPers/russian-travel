@@ -1,0 +1,25 @@
+.places {
+  display: grid;
+  gap: 80px;
+  max-width: 984px;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 1280px){
+  .places {
+    max-width: calc(928px + (984 - 928) * ((100vw - 1024px) / (1280 - 1024)));
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .places {
+    max-width: calc(720px + (928 - 720) * ((100vw - 768px) / (1024 - 768)));
+    gap: calc(70px + (80 - 70) * ((100vw - 768px) / (1024 - 768)));
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .places {
+    gap: calc(60px + (72 - 60) * ((100vw - 320px) / (650 - 320)));
+  }
+}

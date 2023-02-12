@@ -1,0 +1,14 @@
+.place__website {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  align-self: flex-end;
+  grid-area: website;
+}
+
+@media screen and (max-width: 650px) {
+  .place__website {
+    align-self: flex-start;
+    padding: 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320))) 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320)));
+  }
+}

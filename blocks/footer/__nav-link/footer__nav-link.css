@@ -1,0 +1,22 @@
+.footer__nav-link {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #FFFFFF;
+  font-size: 16px;
+  line-height: 18px;
+  text-decoration: none;
+  margin-right: 18px;
+}
+
+.footer__nav-link:last-of-type {
+  margin: 0;
+}
+
+@media screen and (max-width: 650px) {
+  .footer__nav-link {
+    margin: 0 0 calc(32px + (0 - 32) * ((100vw - 320px) / (650 - 320))) 0;
+    font-size: calc(24px + (16 - 24) * ((100vw - 320px) / (650 - 320)));
+    line-height: calc(24px + (18 - 24) * ((100vw - 320px) / (650 - 320)));
+  }
+}

@@ -1,0 +1,17 @@
+.main__photo-grid {
+  margin: 0 auto;
+  padding-bottom: 92px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1024px) {
+  .main__photo-grid {
+    padding-bottom: calc(88px (92 - 88) * ((100vw - 768px) / (1024 - 768)));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main__photo-grid {
+    padding-bottom: calc(64px + (88 - 64) * ((100vw - 320px) / (768 - 320)));
+  }
+}

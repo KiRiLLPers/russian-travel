@@ -1,0 +1,50 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 100%;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+  min-height: 740px;
+}
+
+.card::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.3;
+  z-index: -1;
+  transition: opacity 200ms ease-in-out;
+}
+
+.card:hover:before {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 1280px) {
+  .card {
+    min-height: calc(640px + (740 - 640) * ((100vw - 1024px) / (1280 - 1024)));
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .card {
+    min-height: calc(480px + (640 - 480) * ((100vw - 768px) / (1024 - 768)));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card {
+    min-height: calc(200px + (480 - 200) * ((100vw - 320px) / (768 - 320)));
+  }
+}

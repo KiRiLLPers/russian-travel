@@ -1,0 +1,20 @@
+.card__subtitle {
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #FFFFFF;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  margin: 0;
+  max-width: 360px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .card__subtitle {
+    font-size: calc(14px + (18 - 14) * ((100vw - 320px) / (768 - 320)));
+    line-height: calc(16px + (22 - 16) * ((100vw - 320px) / (768 - 320)));
+    max-width: calc(288px + (360 - 288) * ((100vw - 320px) / (768 - 320)));
+  }
+}

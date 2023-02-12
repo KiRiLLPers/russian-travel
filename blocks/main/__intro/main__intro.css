@@ -1,0 +1,11 @@
+.main__intro {
+  padding-bottom: 92px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+  .main__intro {
+    padding-bottom: calc(64px + (88 - 64) * ((100vw - 320px) / (768 - 320)));
+  }
+}

@@ -1,0 +1,31 @@
+.place__title {
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  color: #FFFFFF;
+  font-size: 72px;
+  line-height: 76px;
+  grid-area: title;
+}
+
+@media screen and (max-width: 1024px) {
+  .place__title {
+    font-size: calc(42px + (72 - 42) * ((100vw - 768px) / (1024 - 768)));
+    line-height: calc(46px + (76 - 46) * ((100vw - 768px) / (1024 - 768)));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .place__title {
+    padding-right: 10px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .place__title {
+    font-size: calc(32px + (42 -32) * ((100vw - 320px) / (650 - 320)));
+    padding: 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320))) 0 calc(16px + (0 - 16) * ((100vw - 320px) / (650 - 320)));
+    line-height: calc(35px + (46 - 35) * ((100vw - 320px) / (650 - 320)));
+  }
+}

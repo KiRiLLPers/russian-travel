@@ -16,4 +16,6 @@
 4. Grid.
 5. Flex.
 6. Figma.
-7. scss.
+7. scss. 
+
+[Ссылка на страницу "Путешествия по России"](https://kirillpers.github.io/russian-travel/) 

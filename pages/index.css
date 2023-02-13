@@ -11,6 +11,7 @@
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 @import url(../blocks/header/__list-link/header__list-link.css);
+@import url(../blocks/header/__item-link/header__item-link.css);
 @import url(../blocks/header/__lang-link/header__lang-link.css);
 @import url(../blocks/header/__lang-link/_active/header__lang-link_active.css);
 
@@ -46,6 +47,8 @@
 @import url(../blocks/place/__image/place__image.css);
 @import url(../blocks/place/__paragraphs/place__paragraphs.css);
 @import url(../blocks/place/__paragraph/place__paragraph.css);
+@import url(../blocks/place/__paragraph/_letter-spacing/place__paragraph_letter-spacing_wider.css);
+@import url(../blocks/place/__paragraph/_letter-spacing/place__paragraph_letter-spacing_narrow.css);
 
 @import url(../blocks/cover/cover.css);
 @import url(../blocks/card/card.css);

@@ -1,0 +1,5 @@
+@media screen and (max-width: 320px) {
+  .place__paragraph_letter-spacing_wider {
+    letter-spacing: 0.5px;
+  }
+}
